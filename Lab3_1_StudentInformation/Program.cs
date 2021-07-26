@@ -39,18 +39,18 @@ namespace Lab3_1_StudentInformation
             string[] studentNames = { "Jane Doe", "John Roe", "Zane Poe" };
             string[] studentFavFood = { "avocados", "blueberries", "cantelopes" };
             string[] studentPreviousTitle = { "President", "Vice President", "Secretary" };
-            bool isValidInput = false;
 
             Console.WriteLine("Welcome to our DevBuild class!");
 
             do
             {
+                bool isValidInput;
+
                 do
                 {
                     Console.Write($"\nWhich student would you like to learn more about? (enter a number 1-{studentNames.Length}): ");
                     string userInputStudentChoice = Console.ReadLine();
                     bool isInt = int.TryParse(userInputStudentChoice, out int userStudentChoice);
-                    userStudentChoice += 1;
 
                     if (!isInt || userStudentChoice < 1 || userStudentChoice > studentNames.Length)
                     {
@@ -62,7 +62,7 @@ namespace Lab3_1_StudentInformation
                     {
                         isValidInput = true;
 
-                        Console.WriteLine($"\nStudent {userStudentChoice} is {studentNames[userStudentChoice]}. What would you like to know about {studentNames[userStudentChoice]}?\n");
+                        Console.WriteLine($"\nStudent {userStudentChoice} is {studentNames[userStudentChoice - 1]}. What would you like to know about {studentNames[userStudentChoice - 1]}?\n");
                         Console.Write("(Enter 1 for favorite food or 2 for previous title): ");
                         string userInputGetInfoChoice = Console.ReadLine();
                         bool isValidChoice = int.TryParse(userInputGetInfoChoice, out int userGetInfoChoice);
@@ -70,12 +70,12 @@ namespace Lab3_1_StudentInformation
                         if (userGetInfoChoice == 1)
                         {
                             isValidInput = true;
-                            Console.WriteLine($"\n{studentNames[userStudentChoice]}'s favorite food is {studentFavFood[userStudentChoice]}.");
+                            Console.WriteLine($"\n{studentNames[userStudentChoice - 1]}'s favorite food is {studentFavFood[userStudentChoice - 1]}.");
                         }
                         else if (userGetInfoChoice == 2)
                         {
                             isValidInput = true;
-                            Console.WriteLine($"\n{studentNames[userStudentChoice]}'s previous title is {studentPreviousTitle[userStudentChoice]}.");
+                            Console.WriteLine($"\n{studentNames[userStudentChoice - 1]}'s previous title is {studentPreviousTitle[userStudentChoice - 1]}.");
                         }
                         else
                         {
